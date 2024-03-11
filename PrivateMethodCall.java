@@ -3,18 +3,19 @@ package com.fastcampus.ch2;
 import java.lang.reflect.Method;
 
 public class PrivateMethodCall {
-	public static void main(String[] args) throws Exception{ //throws Exception ¿¹¿ÜÃ³¸® 
-		Hello hello = new Hello();
-	//	hello.main(); // privateÀÌ¶ó ¿ÜºÎ È£ÃâÀÌ ºÒ°¡ÇÑ´Ù.
-		
-		// Reflection  API¸¦ »ç¿ëÇØ - Å¬·¡½º Á¤º¸¸¦ ¾ò°í ´Ù·ê ¼ö ÀÖ´Â °­·ÂÇÑ ±â´É Á¦°ø.
-		// java.lang.reflectÆĞÅ°Áö¸¦ Á¦°ø  
-		// HelloÅ¬·¡½ºÀÇ Class°´Ã¼(Å¬·¡½ºÀÇ Á¤º¸¸¦ ´ã°í ÀÖ´Â °´Ã¼ ) ¸¦ ¾ò¾î¿Â´Ù. 
-		Class helloClass = Class.forName("com.fastcompus.ch2.Hello"); //class´Â ¼³°èµµ¶ó °´Ã¼¸¦ ¸¸µé¼ö ÀÖ´Ù.
-		Hello hello1 = (Hello)helloClass.newInstance(); //Class°´Ã¼°¡ °¡Áø Á¤º¸·Î °´Ã¼ »ı¼º 
+	public static void main(String[] args) throws Exception {
+//		Hello hello = new Hello();
+//		hello.main();
+//		
+		// Reflection  APIë¥¼ ì‚¬ìš© - í´ë ìŠ¤ ì •ë³´ë¥¼ ì–»ê³  ë‹¤ë£° ìˆ˜ ìˆëŠ” ê°•ë ¥í•œ ê¸°ëŠ¥ ì œê³µ 
+		// java.lang.reflect íŒ¨í‚¤ì§€ë¥¼ ì œê³µ 
+		// Helloí´ë˜ìŠ¤ì˜ class ê°ì²´ (í´ë˜ìŠ¤ì˜ ì •ë³´ë¥¼ ë‹´ê³  ìˆëŠ” ê°ì²´) ë¥¼ ì–»ì–´ì˜¨ë‹¤.
+		Class helloClass = Class.forName("com.fastcampus.ch2.Hello");
+		Hello hello = (Hello)helloClass.newInstance(); //Class ê°ì²´ê°€ ê°€ì§„ ì •ë³´ë¡œ ê°ì²´ ìƒì„± 
 		Method main = helloClass.getDeclaredMethod("main");
-		main.setAccessible(true); // privateÀÎ main( )À» È£Ãâ°¡´ÉÇÏ°Ô ÇÑ´Ù.
+		main.setAccessible(true); // pricate ì¸ Main()ì„ í˜¸ì¶œ ê°€ëŠ¥í•˜ê²Œ í•¨.
 		
-		main.invoke(hello); //hello.main()
+		main.invoke(hello); //  hello.main
 	}
+
 }
